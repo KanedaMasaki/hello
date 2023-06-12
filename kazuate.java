@@ -27,8 +27,8 @@ public class kazuate {
         for (int i = 0; i < GAMECOUNT; i++){
             System.out.println("2桁の数を入力してください．");
             user_answer = inputNumber();
-            if(user_answer<0||user_answer>99){
-                System.out.println("0から99の間で入力してください．");
+            if(user_answer<10||user_answer>99){
+                System.out.println("10から99の間で入力してください．");
                 i--;
                 continue;
             }
