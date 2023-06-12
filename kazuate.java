@@ -6,7 +6,8 @@ import java.io.InputStreamReader;
  * 数あてゲームクラス
  */
 public class kazuate {
-    int answer = 77;
+    final int GAMECOUNT = 5;
+    int answer;
     boolean flag;
     int user_answer;
 
@@ -16,11 +17,14 @@ public class kazuate {
     public kazuate() {
         flag = false;
         user_answer = -1;
+        answer = 77;
     }
-
+    /**
+	 * 数あてゲームを開始する
+	 */
     public void start() { 
         System.out.println("数あてゲームを始めます．");
-        for (int i = 0; i < 5; i++){
+        for (int i = 0; i < GAMECOUNT; i++){
             System.out.println("2桁の数を入力してください．");
             user_answer = inputNumber();
             if(user_answer<0||user_answer>99){
@@ -34,7 +38,9 @@ public class kazuate {
             }
         }
     }
-
+    /**
+	 * ユーザの入力した数と答えを比較し，結果を表示する
+	 */
     public void judge(int user_answer,int i) {
         if(user_answer == answer){
             System.out.println("正解です．");
@@ -52,7 +58,11 @@ public class kazuate {
                 System.out.println("もっと大きいです．");
             }
             System.out.println("あと"+(4-i)+"回です．");
-            return;
+            if(4-i==0){
+                System.out.println("ゲームオーバーです．");
+                return;
+            }
+                
             }
         }
 
