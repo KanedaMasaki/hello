@@ -1,29 +1,33 @@
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.HashMap;
 
 /**
  * 数あてゲームクラス
  */
 public class kazuate {
     int answer = 77;
-    boolean flag = false;
+    boolean flag;
+    int user_answer;
 
     /**
 	 * コンストラクタ、変数を初期化
 	 */
     public kazuate() {
-
+        flag = false;
+        user_answer = -1;
     }
 
-    public void start() {
+    public void start() { 
         System.out.println("数あてゲームを始めます．");
         for (int i = 0; i < 5; i++){
             System.out.println("2桁の数を入力してください．");
-            int user_answer = inputNumber();
+            user_answer = inputNumber();
+            if(user_answer<0||user_answer>99){
+                System.out.println("0から99の間で入力してください．");
+                i--;
+                continue;
+            }
             judge(user_answer,i);
             if(flag){
                 break;
@@ -52,9 +56,6 @@ public class kazuate {
             }
         }
 
-
-
-
 	/* メソッド：ユーザに整数を入力してもらい，返り値として返す */
 	public int inputNumber() {
 		int number;
@@ -80,8 +81,5 @@ public class kazuate {
 	public static void main(String[] args) {
         kazuate game = new kazuate();
         game.start();
-
-
 	}
-
 }
